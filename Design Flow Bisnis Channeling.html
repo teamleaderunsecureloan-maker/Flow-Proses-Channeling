@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alur Kerja Channeling Kredit Pensiun</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .content-box {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin: 30px 0 20px 0;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+
+        .foundation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .foundation-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .foundation-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .foundation-number {
+            font-size: 3em;
+            font-weight: bold;
+            opacity: 0.3;
+            margin-bottom: 10px;
+        }
+
+        .foundation-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .foundation-desc {
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .flowchart {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            overflow-x: auto;
+        }
+
+        .flow-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .flow-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .flow-box::after {
+            content: '↓';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            color: #667eea;
+        }
+
+        .flow-box:last-child::after {
+            content: '';
+        }
+
+        .decision-box {
+            background: #ffc107;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            position: relative;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .branch {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .branch-path {
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 10px;
+            border: 2px solid #2196f3;
+        }
+
+        .branch-label {
+            font-weight: bold;
+            color: #2196f3;
+            margin-bottom: 10px;
+        }
+
+        .detail-phase {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .phase-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .phase-content {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .phase-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .phase-content li {
+            margin: 8px 0;
+        }
+
+        .integration-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .integration-box {
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .integrated {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .not-integrated {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+            color: white;
+        }
+
+        .accounting-diagram {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .accounting-item {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-3px);
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-left: 5px solid #ffc107;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .warning {
+            background: #f8d7da;
+            padding: 20px;
+            border-left: 5px solid #dc3545;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .success {
+            background: #d4edda;
+            padding: 20px;
+            border-left: 5px solid #28a745;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-box {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .foundation-grid, .integration-comparison, .branch {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="page1" class="page">
+        <div class="container">
+            <div class="content-box">
+                <h1>🏦 Alur Kerja Channeling Kredit Pensiun</h1>
+                <h2>Lima Pondasi Pentingnya Struktur Flow yang Jelas</h2>
+                
+                <p style="text-align: center; font-size: 1.1em; margin: 20px 0; color: #666;">
+                    Proyek pilot 610 debitur hasil migrasi isu Taspen memerlukan fondasi yang kuat untuk mencegah debitur bermasalah dan memastikan skalabilitas ke depan.
+                </p>
+
+                <div class="foundation-grid">
+                    <div class="foundation-card">
+                        <div class="foundation-number">01</div>
+                        <div class="foundation-title"> Kompleksitas Koordinasi Multi-Stakeholder dalam Ekosistem Channeling</div>
+                        <div class="foundation-desc">
+                            Proses channeling kredit pensiun melibatkan orkestra koordinasi antara minimal lima entitas berbeda: Kantor Pusat (Strategic, Risk, Legal, Bisnis Pensiun, dll), Unit Bisnis Asal, Unit Bisnis Pilot Project, Mitra Eksternal, dan sistem Core Banking. Setiap entitas memiliki kepentingan, timeline, dan mekanisme kerja yang berbeda.
+                        </div>
+                    </div>
+
+                    <div class="foundation-card">
+                        <div class="foundation-number">02</div>
+                        <div class="foundation-title"> Integritas Data dan Audit Trail sebagai Backbone Kepatuhan</div>
+                        <div class="foundation-desc">
+                            Dalam bisnis kredit, setiap keputusan harus dapat ditelusuri kembali: siapa yang mengubah status debitur, kapan, mengapa, dan berdasarkan data apa. Dengan portofolio 610 debitur berisiko tinggi, integritas data bukan sekadar kebutuhan operasional, tetapi keharusan compliance dan mitigasi risiko legal.
+                        </div>
+                    </div>
+
+                    <div class="foundation-card">
+                        <div class="foundation-number">03</div>
+                        <div class="foundation-title"> Kecepatan Respons dan Real-Time Monitoring untuk Portofolio Berisiko Tinggi</div>
+                        <div class="foundation-desc">
+                            Debitur dalam skema channeling ini adalah nasabah berisiko tinggi yang memerlukan early warning system. Keterlambatan deteksi masalah—seperti gaji yang tidak masuk atau angsuran inkonsisten—dapat mengakibatkan kerugian yang tidak dapat dipulihkan, terutama jika mekanisme mandatory buy back tidak dieksekusi tepat waktu.
+                        </div>
+                    </div>
+
+                    <div class="foundation-card">
+                        <div class="foundation-number">04</div>
+                        <div class="foundation-title"> Mitigasi Human Error dalam Proses Kritis Bernilai Tinggi</div>
+                        <div class="foundation-desc">
+                            Beberapa tahapan dalam proses channeling memiliki konsekuensi finansial dan legal yang sangat tinggi jika terjadi kesalahan: validasi finansial (Positive/Negative Income), input data ke Core Banking, dan penentuan status buy back. Satu kesalahan input dapat mengakibatkan pinjaman disalurkan kepada debitur yang tidak sesuai dengan ketentuan atau keterlambatan penagihan.
+                        </div>
+                    </div>
+
+                    <div class="foundation-card">
+                        <div class="foundation-number">05</div>
+                        <div class="foundation-title"> Skalabilitas dan Keberlanjutan Model Operasi</div>
+                        <div class="foundation-desc">
+                            Skema channeling yang dimulai dengan pilot project 610 debitur dirancang untuk dapat diperluas ke full loan portfolio di masa depan. Model operasi yang dipilih hari ini—baik aplikasi terintegrasi maupun manual—akan menentukan seberapa mudah atau sulit proses scaling tersebut dilakukan.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight">
+                    <h3>🎯 Tujuan Akhir</h3>
+                    <p>Membangun sistem channeling yang aman, terukur, dan dapat diskalakan dengan meminimalkan risiko debitur bermasalah, menjaga kualitas portofolio, dan memaksimalkan kolaborasi dengan mitra secara transparan.</p>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" disabled>← Sebelumnya</button>
+                    <button class="btn btn-primary" onclick="showPage(2)">Selanjutnya: Flowchart →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page2" class="page" style="display:none;">
+        <div class="container">
+            <div class="content-box">
+                <h1>📊 Flowchart Alur Kerja Channeling</h1>
+                
+                <div class="flowchart">
+                    <div class="flow-section">
+                        <h3>FASE 1: Persiapan & Pengiriman Data</h3>
+                        <div class="flow-box">
+                            📤 Pengiriman Data 610 Debitur ke Mitra<br>
+                            <small>Format Excel - Sudah direview Strategic, Risk, Bisnis Pensiun, Legal</small>
+                        </div>
+                        <div style="text-align: center; margin: 30px 0;">↓</div>
+                        <div class="flow-box">
+                            🔍 Mitra Melakukan Pengecekan Validitas<br>
+                            <small>Kesehatan debitur, kesiapan pencairan, kecukupan biaya sesuai MOU</small>
+                        </div>
+                    </div>
+
+                    <div class="flow-section">
+                        <h3>FASE 2: Usulan & Validasi</h3>
+                        <div style="text-align: center; margin: 30px 0;">↓</div>
+                        <div class="decision-box">
+                            <strong>Mitra Mengusulkan Batch<br>(mis. 200 dari 610)</strong>
+                        </div>
+                        <div style="text-align: center; margin: 30px 0;">↓</div>
+                        
+                        <div class="branch">
+                            <div class="branch-path">
+                                <div class="branch-label">✅ 150 PROPOSE</div>
+                                <div>Memenuhi kriteria → Masuk ke aplikasi internal untuk validasi otomatis</div>
+                            </div>
+                            <div class="branch-path">
+                                <div class="branch-label">❌ 50 PENDING/REJECT</div>
+                                <div>Tidak memenuhi → Wajib diberi alasan & tercatat statusnya</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 30px 0;">↓</div>
+                        <div class="flow-box">
+                            🤖 Aplikasi Internal: Validasi Otomatis<br>
+                            <small>Mapping Nomor Pensiun & CIF | Cek konsistensi data | Rate & tenor | Batas usia</small>
+                        </div>
+                    </div>
+
+                    <div class="flow-section">
+                        <h3>FASE 3: Evaluasi Multi-Layer</h3>
+                        <div style="text-align: center; margin: 30px 0;">↓</div>
+                        <div class="decision-box">
+                            <strong>Data Valid?</strong>
+                        </div>
+                        
+                        <div class="branch">
+                            <div class="branch-path">
+                                <div class="branch-label">✅ YA - Lanjut ke Unit Bisnis</div>
+                                <div>Cek penalti PK, asuransi, status SK, cross-CIF/multi-pinjaman</div>
+                            </div>
+                            <div class="branch-path">
+                                <div class="branch-label">❌ TIDAK - Kembali ke Mitra</div>
+                                <div>Resume ketidaksesuaian → Mitra perbaiki/reject → Riwayat tersimpan</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 30px 0;">↓</div>
+                        <div class="flow-box">
+                            🏢 Evaluasi Kantor Pusat<br>
+                            <small>Analisis kemampuan debitur menutup pinjaman (mis. 130 → 110 layak, 20 tidak)</small>
+                        </div>
+                    </div>
+
+                    <div class="flow-section">
+                        <h3>FASE 4: Eksekusi & Input</h3>
+                        <div style="text-align: center; margin: 30px 0;">↓</div>
+                        <div class="decision-box">
+                            <strong>Integrasi Core Banking?</strong>
+                        </div>
+                        
+                        <div class="branch">
+                            <div class="branch-path">
+                                <div class="branch-label">🔗 TERINTEGRASI</div>
+                                <div>✓ Input via CIF otomatis<br>✓ Status eksekusi update real-time<br>✓ Data selalu sinkron</div>
+                            </div>
+                            <div class="branch-path">
+                                <div class="branch-label">⚠️ TIDAK TERINTEGRASI</div>
+                                <div>✓ Input manual oleh Unit Bisnis<br>✓ Update status manual<br>✓ Perlu rekonsiliasi berkala</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flow-section">
+                        <h3>FASE 5: Maintenance & Monitoring</h3>
+                        <div style="text-align: center; margin: 30px 0;">↓</div>
+                        <div class="flow-box">
+                            📅 Proses Angsuran Bulanan<br>
+                            <small>Mitra transfer ke escrow → Verifikasi (otomatis/manual) → Payroll di core banking</small>
+                        </div>
+                        <div style="text-align: center; margin: 30px 0;">↓</div>
+                        <div class="flow-box">
+                            🚨 Early Warning System<br>
+                            <small>Identifikasi debitur bermasalah → Status "wajib buyback" → Mitigasi dini</small>
+                        </div>
+                        <div style="text-align: center; margin: 30px 0;">↓</div>
+                        <div class="flow-box">
+                            🔄 Monitoring Berkelanjutan<br>
+                            <small>Kolektibilitas | Klaim meninggal | Pelunasan | Status gaji | Flagging | Verifikasi dokumen (1 bulan pasca eksekusi)</small>
+                        </div>
+                        <div style="text-align: center; margin: 30px 0; font-size: 1.5em; color: #667eea;">
+                            ⟲ SIKLUS BERULANG hingga portofolio selesai
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="showPage(1)">← Pondasi</button>
+                    <button class="btn btn-primary" onclick="showPage(3)">Selanjutnya: Detail Fase →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page3" class="page" style="display:none;">
+        <div class="container">
+            <div class="content-box">
+                <h1>📋 Penjelasan Detail Setiap Fase</h1>
+
+                <div class="detail-phase">
+                    <div class="phase-header">FASE 1: Persiapan & Pengiriman Data (Tahap 1-4)</div>
+                    <div class="phase-content">
+                        <strong>1. Pengiriman Data 610 Debitur ke Mitra</strong>
+                        <ul>
+                            <li>File Excel berisi 610 debitur hasil migrasi isu Taspen dikirim ke mitra channeling</li>
+                            <li>Tujuan: pengecekan validitas, kondisi kesehatan debitur, kesiapan pencairan ulang, konfirmasi kecukupan biaya sesuai MOU</li>
+                        </ul>
+
+                        <strong>2. Format Data & Review Internal</strong>
+                        <ul>
+                            <li>File disiapkan oleh MIS dan telah melalui review lengkap dari Strategic, Risk, Bisnis Pensiun, dan Legal</li>
+                            <li>Memastikan data yang dishare sesuai regulasi dan kesepakatan</li>
+                        </ul>
+
+                        <strong>3. Pengusulan Bertahap oleh Mitra</strong>
+                        <ul>
+                            <li>Mitra dapat mengusulkan secara batch (tidak harus semua sekaligus)</li>
+                            <li>Contoh: 200 dicek → 150 propose, 50 tidak diusulkan (dengan alasan)</li>
+                        </ul>
+
+                        <strong>4. Status Jelas Sejak Awal</strong>
+                        <ul>
+                            <li>Setiap debitur wajib memiliki status: Belum Cek / Pending / Reject / Propose</li>
+                            <li>Tujuan: menghindari inkonsistensi dan memudahkan root-cause analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-phase">
+                    <div class="phase-header">FASE 2: Sistem & Validasi Otomatis (Tahap 5-12)</div>
+                    <div class="phase-content">
+                        <strong>5. Aplikasi Internal untuk Otomatisasi</strong>
+                        <ul>
+                            <li>Menerima berbagai format input dari mitra (Excel/CSV/Text)</li>
+                            <li>Menyimpan database 610 debitur dan melakukan mapping otomatis berdasarkan Nomor Pensiun & CIF</li>
+                        </ul>
+
+                        <strong>6. Dua Big-Data Terpisah</strong>
+                        <ul>
+                            <li>Big data pilot 610 debitur (khusus evaluasi pilot)</li>
+                            <li>Big data seluruh portofolio pensiun (terhubung core banking)</li>
+                            <li>Tujuan: evaluasi pilot dan deteksi usulan di luar 610</li>
+                        </ul>
+
+                        <strong>7. Integrasi dengan Core Banking</strong>
+                        <ul>
+                            <li>Data total loan harus terintegrasi otomatis agar selalu up-to-date</li>
+                            <li>Jika tidak tersedia: mekanisme input manual oleh Unit Bisnis</li>
+                        </ul>
+
+                        <strong>8. Sumber Usulan di Aplikasi</strong>
+                        <ul>
+                            <li>Tiga sumber: 610 pilot, debitur eksisting, debitur baru</li>
+                            <li>Setiap usulan wajib melampirkan: Nomor Pensiun, CIF, data pribadi, bukti kemampuan finansial sesuai MOU</li>
+                        </ul>
+
+                        <strong>9-12. Pengecekan & Siklus Validasi</strong>
+                        <ul>
+                            <li>Aplikasi validasi konsistensi data, rate, batas usia/tenor, parameter lain</li>
+                            <li>Jika tidak sesuai: resume ketidaksesuaian → kirim ke mitra untuk perbaikan</li>
+                            <li>Riwayat perubahan disimpan otomatis</li>
+                            <li>Proses berulang hingga data valid</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-phase">
+                    <div class="phase-header">FASE 3: Evaluasi Multi-Layer (Tahap 13-15)</div>
+                    <div class="phase-content">
+                        <strong>13. Pengecekan Unit Bisnis Pemilik Portofolio</strong>
+                        <ul>
+                            <li>Menilai penalti PK (Pelunasan Kredit)</li>
+                            <li>Evaluasi nilai asuransi dan status jaminan (SK)</li>
+                            <li>Cek kondisi pinjaman lain: cross CIF dan multi-pinjaman</li>
+                        </ul>
+
+                        <strong>14. Evaluasi Finansial Kantor Pusat</strong>
+                        <ul>
+                            <li>Analisis kemampuan debitur menutup pinjaman</li>
+                            <li>Contoh: dari 130 usulan → 110 layak, 20 tidak layak</li>
+                            <li>Keputusan final approval berada di level ini</li>
+                        </ul>
+
+                        <strong>15. Input di Unit Bisnis Pilot</strong>
+                        <ul>
+                            <li><strong>Terintegrasi:</strong> Input via CIF otomatis dari core banking</li>
+                            <li><strong>Tidak terintegrasi:</strong> Input manual oleh Unit Bisnis pilot</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-phase">
+                    <div class="phase-header">FASE 4: Eksekusi & Update Status (Tahap 16)</div>
+                    <div class="phase-content">
+                        <strong>16. Status Eksekusi Terupdate</strong>
+                        <ul>
+                            <li><strong>Terintegrasi:</strong> Status eksekusi pinjaman update otomatis di aplikasi</li>
+                            <li><strong>Tidak terintegrasi:</strong> Status diupdate manual oleh Unit Bisnis</li>
+                            <li>Penting untuk tracking real-time status pencairan dan dokumentasi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="detail-phase">
+                    <div class="phase-header">FASE 5: Maintenance & Monitoring Berkelanjutan (Tahap 17-30)</div>
+                    <div class="phase-content">
+                        <strong>17-21. Proses Angsuran Bulanan</strong>
+                        <ul>
+                            <li>Mitra mentransfer angsuran ke rekening escrow sesuai rekapan tagihan</li>
+                            <li>Jika ada debitur tidak tertagih: mitra wajib jelaskan alasan (stop gaji, rekening pasif, meninggal, rekonsiliasi, dll)</li>
+                            <li>Konfirmasi dana masuk: otomatis (jika integrasi) atau manual (jika tidak)</li>
+                            <li>Proses payroll di core banking: otomatis atau manual berdasarkan data upload</li>
+                            <li>Waktu transfer mitra dicatat sebagai KPI kinerja dan kepatuhan</li>
+                        </ul>
+
+                        <strong>22-24. Kontrol Akses & Early Warning</strong>
+                        <ul>
+                            <li>Mitra tidak diberikan akses langsung ke aplikasi; tim kantor pusat yang upload</li>
+                            <li>Identifikasi dini debitur bermasalah</li>
+                            <li>Debitur dengan angsuran tidak masuk diberi status "wajib buyback oleh mitra" sebelum masuk kolektibilitas bermasalah</li>
+                            <li>Sistem early warning memungkinkan mitigasi lebih awal</li>
+                        </ul>
+
+                        <strong>25-30. Pengelolaan Kondisi Spesifik</strong>
+                        <ul>
+                            <li>Proses pelunasan: normal vs buyback (aplikasi tentukan kategori otomatis)</li>
+                            <li>Mapping khusus untuk rekening pasif, meninggal dunia, perubahan status gaji</li>
+                            <li>Pencatatan flagging & waktu penyelesaian yang ter-record dengan root cause dan timeline</li>
+                            <li>Pengecekan dokumen fisik dijadwalkan 1 bulan setelah eksekusi</li>
+                            <li>Status verifikasi dokumen dicatat di aplikasi</li>
+                            <li><strong>Siklus berulang</strong> hingga debitur tidak lagi memiliki pinjaman di portofolio channeling</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="showPage(2)">← Flowchart</button>
+                    <button class="btn btn-primary" onclick="showPage(4)">Selanjutnya: Akuntansi & Integrasi →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page4" class="page" style="display:none;">
+        <div class="container">
+            <div class="content-box">
+                <h1>💰 Pencatatan Akuntansi & Dampak Integrasi</h1>
+
+                <h2>Pencatatan Akuntansi (Garis Besar)</h2>
+                
+                <div class="accounting-diagram">
+                    <p style="margin-bottom: 20px; color: #666;">
+                        Pencatatan akuntansi tidak dijabarkan pada setiap cabang flow, melainkan digambarkan sebagai modul agregat yang men-summarize seluruh transaksi channeling.
+                    </p>
+
+                    <div class="accounting-item">
+                        <h3>📊 Komponen Pencatatan Utama</h3>
+                        <ul>
+                            <li><strong>Fee Mitra:</strong> Total biaya channeling yang dibayarkan ke mitra berdasarkan MOU (persentase dari outstanding atau flat fee per transaksi)</li>
+                            <li><strong>Pendapatan Angsuran:</strong> Total angsuran yang berhasil diterima dari debitur melalui mitra (transfer ke escrow)</li>
+                            <li><strong>Outstanding yang Diambil Alih:</strong> Total pinjaman yang di-take over dalam skema channeling (untuk evaluasi eksposur)</li>
+                            <li><strong>Biaya Mitigasi:</strong> Biaya operasional, verifikasi dokumen, rekonsiliasi, dan penanganan debitur bermasalah</li>
+                            <li><strong>Provisi Cadangan:</strong> Pembentukan cadangan kerugian penurunan nilai (CKPN) untuk antisipasi NPL</li>
+                            <li><strong>Buyback dari Mitra:</strong> Pelunasan dipercepat oleh mitra untuk debitur bermasalah (sesuai mekanisme early warning)</li>
+                        </ul>
+                    </div>
+
+                    <div class="accounting-item">
+                        <h3>📈 Modul Laporan Agregat</h3>
+                        <ul>
+                            <li><strong>Summary Keuangan Bulanan:</strong> Total pendapatan vs biaya channeling</li>
+                            <li><strong>Analisis Profitabilitas:</strong> Net income dari skema channeling setelah dikurangi fee mitra dan biaya operasional</li>
+                            <li><strong>Eksposur NPL:</strong> Monitoring debitur dengan kolektibilitas menurun dan proyeksi kerugian</li>
+                            <li><strong>KPI Kinerja Mitra:</strong> Tingkat ketepatan transfer angsuran, jumlah buyback, dan response time perbaikan data</li>
+                            <li><strong>Rekonsiliasi Escrow:</strong> Matching antara tagihan, transfer mitra, dan payroll ke core banking</li>
+                        </ul>
+                    </div>
+
+                    <div class="accounting-item">
+                        <h3>⚠️ Potensi Kerugian yang Dipantau</h3>
+                        <ul>
+                            <li>Debitur meninggal tanpa klaim asuransi yang cukup</li>
+                            <li>Debitur stop gaji sebelum mekanisme buyback dieksekusi</li>
+                            <li>Keterlambatan transfer mitra yang menyebabkan denda atau opportunity cost</li>
+                            <li>Selisih rekonsiliasi yang tidak teridentifikasi tepat waktu</li>
+                            <li>Biaya legal untuk penanganan debitur wanprestasi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 50px;">🔗 Dampak Integrasi</h2>
+
+                <div class="integration-comparison">
+                    <div class="integration-box integrated">
+                        <h3 style="margin-bottom: 20px;">✅ TERINTEGRASI</h3>
+                        <h4>Keuntungan:</h4>
+                        <ul style="margin-left: 20px; line-height: 1.8;">
+                            <li>Data real-time dari core banking langsung tersedia</li>
+                            <li>Otomatisasi input dan update status eksekusi</li>
+                            <li>Laporan konsisten tanpa perlu rekonsiliasi manual</li>
+                            <li>Efisiensi proses: payroll otomatis, matching otomatis</li>
+                            <li>Monitoring eksekusi lebih akurat dan cepat</li>
+                            <li>Minimalisasi human error dalam entry data</li>
+                            <li>Audit trail lengkap tersimpan otomatis</li>
+                            <li>Skalabilitas lebih mudah untuk ekspansi portofolio</li>
+                        </ul>
+                    </div>
+
+                    <div class="integration-box not-integrated">
+                        <h3 style="margin-bottom: 20px;">⚠️ TIDAK TERINTEGRASI</h3>
+                        <h4>Tantangan:</h4>
+                        <ul style="margin-left: 20px; line-height: 1.8;">
+                            <li>Proses manual di Unit Bisnis pilot</li>
+                            <li>Potensi human error lebih tinggi (typo, duplikasi)</li>
+                            <li>Keterlambatan update status pinjaman</li>
+                            <li>Kebutuhan rekonsiliasi lebih sering dan detail</li>
+                            <li>Penambahan workload administratif signifikan</li>
+                            <li>Data lag: informasi tidak selalu real-time</li>
+                            <li>Risiko inkonsistensi antara sistem dan realita</li>
+                            <li>Sulit untuk scale up ke portofolio lebih besar</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight" style="margin-top: 30px;">
+                    <h3>💡 Rekomendasi</h3>
+                    <p>
+                        Untuk pilot 610 debitur, sistem dapat dimulai dengan mode tidak terintegrasi (manual) dengan SOP ketat. 
+                        Namun, untuk skalabilitas jangka panjang, <strong>integrasi core banking adalah keharusan</strong> untuk 
+                        memastikan efisiensi, akurasi, dan kemampuan mengelola portofolio yang lebih besar.
+                    </p>
+                </div>
+
+                <div class="warning" style="margin-top: 20px;">
+                    <h3>🚨 Critical Success Factors</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Pastikan aplikasi internal dapat handle berbagai format input mitra</li>
+                        <li>Build robust error handling dan validation rules</li>
+                        <li>Implementasi dual-database (pilot vs full portfolio) dengan sync mechanism yang jelas</li>
+                        <li>Siapkan backup plan manual jika integrasi core banking mengalami gangguan</li>
+                        <li>Training memadai untuk Unit Bisnis yang mengelola input manual</li>
+                    </ul>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="showPage(3)">← Detail Fase</button>
+                    <button class="btn btn-primary" onclick="showPage(5)">Selanjutnya: Penutup →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page5" class="page" style="display:none;">
+        <div class="container">
+            <div class="content-box">
+                <h1>🎯 Penutup: Mengapa Pondasi Ini Sangat Penting</h1>
+
+                <div class="success" style="margin: 30px 0;">
+                    <h2 style="color: #155724;">Tanpa Struktur Flow yang Jelas, Risiko yang Muncul:</h2>
+                </div>
+
+                <div class="detail-phase">
+                    <div class="phase-header">1️⃣ Duplikasi Data & Inkonsistensi Status</div>
+                    <div class="phase-content">
+                        <p><strong>Risiko:</strong> Debitur yang sama diusulkan berulang kali oleh mitra, atau status berbeda antara sistem mitra dengan internal bank.</p>
+                        <p><strong>Dampak:</strong> Overexposure, pinjaman ganda, dan kesulitan tracking perkembangan setiap debitur.</p>
+                        <p><strong>Mitigasi dengan Flow:</strong> Status jelas sejak awal (Belum Cek/Pending/Reject/Propose) dan aplikasi internal dengan mapping CIF/Nomor Pensiun mencegah duplikasi.</p>
+                    </div>
+                </div>
+
+                <div class="detail-phase">
+                    <div class="phase-header">2️⃣ Keterlambatan Eksekusi & Bottleneck Operasional</div>
+                    <div class="phase-content">
+                        <p><strong>Risiko:</strong> Tanpa otomatisasi, setiap tahap validasi dan approval memakan waktu lama karena proses manual.</p>
+                        <p><strong>Dampak:</strong> Debitur yang seharusnya bisa diselamatkan justru terlambat ditangani dan masuk NPL.</p>
+                        <p><strong>Mitigasi dengan Flow:</strong> Aplikasi internal dengan validasi otomatis dan integrasi core banking mempercepat proses 10x lipat.</p>
+                    </div>
+                </div>
+
+                <div class="detail-phase">
+                    <div class="phase-header">3️⃣ Miskomunikasi Antar Unit & Lack of Accountability</div>
+                    <div class="phase-content">
+                        <p><strong>Risiko:</strong> Tidak jelas siapa yang bertanggung jawab di setiap tahap, sehingga terjadi blame game saat ada masalah.</p>
+                        <p><strong>Dampak:</strong> Keterlambatan penanganan issue, frustrasi tim internal, dan kredibilitas skema channeling menurun.</p>
+                        <p><strong>Mitigasi dengan Flow:</strong> Audit trail lengkap mencatat siapa melakukan apa dan kapan, dari mitra hingga kantor pusat.</p>
+                    </div>
+                </div>
+
+                <div class="detail-phase">
+                    <div class="phase-header">4️⃣ Meningkatnya Debitur Bermasalah (NPL)</div>
+                    <div class="phase-content">
+                        <p><strong>Risiko:</strong> Tanpa early warning system, debitur yang angsurannya bermasalah baru terdeteksi setelah terlambat.</p>
+                        <p><strong>Dampak:</strong> NPL meningkat, potensi kerugian membesar, dan skema channeling dianggap tidak efektif.</p>
+                        <p><strong>Mitigasi dengan Flow:</strong> Flagging otomatis dan mekanisme buyback mitra memastikan intervensi dini sebelum masuk kolektibilitas bermasalah.</p>
+                    </div>
+                </div>
+
+                <div class="detail-phase">
+                    <div class="phase-header">5️⃣ Kesalahan Akuntansi & Opacity Profitabilitas</div>
+                    <div class="phase-content">
+                        <p><strong>Risiko:</strong> Fee mitra, biaya operasional, dan potensi kerugian tidak tercatat dengan jelas.</p>
+                        <p><strong>Dampak:</strong> Management tidak bisa menilai apakah skema channeling menguntungkan atau merugikan; keputusan ekspansi tidak berbasis data.</p>
+                        <p><strong>Mitigasi dengan Flow:</strong> Modul akuntansi agregat memberikan visibility penuh atas pendapatan, biaya, dan eksposur risiko.</p>
+                    </div>
+                </div>
+
+                <div class="highlight" style="margin: 40px 0; padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <h2 style="color: white; border: none; text-align: center; margin-bottom: 30px;">🏆 Kesimpulan</h2>
+                    <p style="font-size: 1.1em; line-height: 1.8; text-align: center;">
+                        Pembuatan flow yang jelas, sistematis, dan terautomasi dengan opsi integrasi 
+                        merupakan <strong>fondasi krusial</strong> agar skema channeling kredit pensiun dapat berjalan 
+                        <strong>aman, terukur, dan dapat diskalakan</strong>.
+                    </p>
+                    <p style="font-size: 1.1em; line-height: 1.8; text-align: center; margin-top: 20px;">
+                        Dengan 610 debitur pilot yang memiliki kompleksitas tinggi akibat isu Taspen, 
+                        kesuksesan pilot ini akan menentukan apakah skema dapat diperluas ke populasi lebih besar. 
+                    </p>
+                    <p style="font-size: 1.2em; line-height: 1.8; text-align: center; margin-top: 20px; font-weight: bold;">
+                        Investasi dalam sistem, aplikasi, serta SOP yang kuat sejak awal akan membantu bank menghindari potensi kerugian yang jauh lebih besar di masa mendatang.
+                    </p>
+	                    <p style="font-size: 1.2em; line-height: 1.8; text-align: center; margin-top: 20px; font-weight: bold;">
+Selain itu, apabila skema ini terpaksa harus dijalankan secara manual, setiap fungsi dan peran dari masing-masing bagian harus dijabarkan secara rinci. Detail langkah, pemilik proses, kontrol, serta titik keputusan wajib disusun dengan jelas agar proses manual tetap berada dalam pengawasan yang ketat dan risiko dapat diminimalkan.
+	</p>
+                </div>
+
+                <div class="success" style="margin: 40px 0; padding: 30px;">
+                    <h3>✅ Action Items untuk Implementasi</h3>
+                    <ol style="margin-left: 20px; line-height: 2;">
+                        <li>Finalisasi requirement aplikasi internal (format input, validasi rules, database structure)</li>
+                        <li>Tentukan roadmap integrasi core banking (timeline, resources, testing protocol)</li>
+                        <li>Dokumentasi SOP untuk skenario tidak terintegrasi (backup manual process)</li>
+                        <li>Setup modul akuntansi dan reporting dashboard untuk monitoring real-time</li>
+                        <li>Training komprehensif untuk semua pihak terlibat (mitra, Unit Bisnis, Kantor Pusat)</li>
+                        <li>Penetapan KPI dan review mechanism untuk evaluasi pilot</li>
+                        <li>Persiapan contingency plan untuk berbagai skenario edge cases</li>
+                    </ol>
+                </div>
+
+                <div style="text-align: center; margin: 50px 0; padding: 40px; background: #f8f9fa; border-radius: 15px;">
+                    <h2 style="color: #667eea; margin-bottom: 20px;">Project Bisnis Channeling</h2>
+                    <p style="font-size: 1.1em; color: #666; margin-bottom: 30px;">
+                        Flow ini menggambarkan keseluruhan proses bisnis dalam skema kredit channeling, mulai dari bagaimana data diterima, diverifikasi, diproses, hingga akhirnya dimaintenance. Diagram ini berfungsi sebagai representasi end-to-end dari alur operasional, sehingga setiap peran, tahapan, dan keputusan dalam proses dapat terlihat dengan jelas dan dapat dievaluasi secara menyeluruh.
+                    </p>
+                    <p style="font-size: 0.9em; color: #999;">
+                        Dokumen ini merupakan blueprint awal yang perlu divalidasi dan disesuaikan dengan kondisi aktual di lapangan.
+                    </p>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="showPage(4)">← Akuntansi & Integrasi</button>
+                    <button class="btn btn-primary" onclick="showPage(1)">🔄 Kembali ke Awal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageNum) {
+            // Hide all pages
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById('page' + i).style.display = 'none';
+            }
+            // Show selected page
+            document.getElementById('page' + pageNum).style.display = 'flex';
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize - show first page
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage(1);
+        });
+    </script>
+</body>
+</html>
